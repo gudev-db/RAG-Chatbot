@@ -28,7 +28,7 @@ const Home = () => {
   };
   return (
     <main>
-      <Image src={f1GPTLogo} width="250" alt="F1 GPT Logo" />
+      <Image src={pikachu} width="250" alt="F1 GPT Logo" />
       <section className={noMessages ? "" : "populated"}>
         {noMessages ? (
           <>
