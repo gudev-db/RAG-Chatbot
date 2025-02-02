@@ -21,11 +21,10 @@ const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
 
 // define which website to scrape
 const f1Data = [
-  "https://www.ufc.com/rankings",
-  "https://en.wikipedia.org/wiki/List_of_UFC_events",
-  "https://en.wikipedia.org/wiki/Ultimate_Fighting_Championship",
-  "https://en.wikipedia.org/wiki/List_of_UFC_events",
-  "https://en.wikipedia.org/wiki/UFC_308",
+  "https://en.wikipedia.org/wiki/Pok%C3%A9mon",
+  "https://en.wikipedia.org/wiki/List_of_Pok%C3%A9mon_video_gamess",
+  "https://en.wikipedia.org/wiki/Pok%C3%A9mon_HeartGold_and_SoulSilver",
+  
 ];
 
 // Comment: Not conforming to TS strictness
