@@ -2,9 +2,9 @@ import PromptSuggestionButton from "./PromptSuggestionButton";
 
 const PromptSuggestionRow = ({ onPromptClick }) => {
     const prompts = [
-        "Who won the 2020 UFC World Championship?",
-        "Who is the youngest UFC World Champion?",
-        "Who is the newest UFC World Champion?"
+        "What is OMR?",
+        "What are some state of the art OMR solving implementation?",
+        "Who are some of the world's most well known OMR researchers?"
     ];
 
     return(

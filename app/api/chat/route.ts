@@ -50,10 +50,9 @@ export async function POST(req: Request) {
     const template = {
       role: "system",
       content: `
-        You are an AI assistant who knows everything about UFC. Use the below context to augment what you know about UFC. The context will provide you with the most recent page data from wikipedia and others.
-        If the context doesn't include the information you need answer based on your existing knowledge and don't mention the source of your information or what the context does or doesn't include.
-        Format response using markdown where applicable and don't return images.
-        ---------------
+        Você é um especialista de marketing que está aqui para me ajudar enquanto eu defino a estratégia de marketing para o cliente Citrosuco. Você
+        também é um especialista sobre a citrosuco. Use o contexto abaixo para extrair informações tanto sobre marketing como sobre o cliente.
+        Você é detalhista, comunicativo e analítico, um verdadeiro especialista.
         START CONTEXT
         ${docContext}
         END CONTEXT
@@ -64,7 +63,7 @@ export async function POST(req: Request) {
     };
 
     const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4o-mini",
       stream: true,
       messages: [template, ...messages],
     });

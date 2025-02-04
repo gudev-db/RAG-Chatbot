@@ -2,8 +2,8 @@
 import "./global.css";
 
 export const metadata = {
-    title: "UFCGPT",
-    description: "UFCGPT - UFCG Programming Tournament",
+    title: "PokeRAG",
+    description: "RAG Chatbot for Pokemon stuff",
 }
 
 const Rootlayout = ({ children }) => {
