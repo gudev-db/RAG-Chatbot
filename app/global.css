@@ -222,3 +222,26 @@ input[type="submit"]:active {
     50% {background-size: calc(100% / 3) 100%, calc(100% / 3) 0%, calc(100% / 3) 100%;}
     66% {background-size: calc(100% / 3) 100%, calc(100% / 3) 100%, calc(100% / 3) 0%;}
 }
+
+/* Estilo para a bolha do usuário */
+.user-bubble {
+    background-color: #f0f0f0;
+    color: #333;
+    align-self: flex-end; /* Bolha do usuário à direita */
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    max-width: 70%;
+  }
+  
+  /* Estilo para a bolha da IA */
+  .ai-bubble {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-start; /* Bolha da IA à esquerda */
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    max-width: 70%;
+  }
+  

@@ -7,6 +7,8 @@ import Bubble from "./components/Bubble";
 import LoadingBubble from "./components/LoadingBubble";
 import PromptSuggestionRow from "./components/PromptSuggestionsRow";
 
+
+
 const UserInput = ({ input, handleInputChange, handleSubmit }) => {
   return (
     <div className="input-area">
@@ -45,14 +47,11 @@ const Home = () => {
 
   return (
     <main>
-      
       <div className="chat-container">
         <section className={noMessages ? "" : "populated"}>
           {noMessages ? (
             <>
-              <p className="starter-text">
-                Welcome to RAGSearch!
-              </p>
+              <p className="starter-text">Welcome to RAGSearch!</p>
               <PromptSuggestionRow onPromptClick={handlePrompt} />
             </>
           ) : (
