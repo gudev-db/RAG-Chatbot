@@ -19,27 +19,7 @@ const {
 
 const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
 
-// define which website to scrape
-const f1Data = [
-  "https://docs.google.com/document/d/1jhfLliZ3xFPPRVujycHk7mZuGG8ZX_-I97GVEFFviaA/edit?tab=t.0",
-  "https://docs.google.com/document/d/1zGu1fNopzGBzf2OU7KFvAvsThtrFNnsWMlRMXkcQx0M/edit?tab=t.0",
-  "https://docs.google.com/document/d/1W823sGLeNPAlw44QtmsTej9BYgbCmepQrL83xFokcos/edit?tab=t.0",
-  "https://docs.google.com/document/d/19dpqC75jSDmkF6R5NbwecM3Yoj4ebOSiNbJ2zwL9cGE/edit?tab=t.0",
-  "https://docs.google.com/document/d/19sVar6ENkkXQ1mI94aUC905gOOcc9PRoos6eq-3L1Mk/edit?tab=t.0",
-  "https://docs.google.com/document/d/1o37Nt0DACvqGjflFdz2jy4eVIk6vK02g59xFM822_k0/edit?tab=t.0",
-  "https://docs.google.com/document/d/1-sKhHdqsSS53UPI2fNqFQmW85zEltf0V41bZ4VlCBPM/edit?tab=t.0",
-  "https://www.citrosuco.com/",
-  "https://www.citrosuco.com/products/",
-  "https://www.citrosuco.com/a-citrosuco/",
-  "https://www.linkedin.com/company/citrosuco/posts/?feedView=all",
-  "https://finance.yahoo.com/news/brazil-orange-juice-heavyweight-citrosuco-143515156.html",
-  "https://www.citrosuco.com/linha-do-tempo/",
-  "https://www.citrosuco.com/commitments/indicators/",
-  "https://www.citrosuco.com/sustentabilidade/",
-  "https://www.citrosuco.com/cadeia-de-valor/",
-  "https://www.citrosuco.com/wp-content/uploads/2024/01/Citrosuco_ra_2021_2022_eng_final.pdf",
-  
-];
+//websites do scrape
 
 // define which website to scrape
 const citrosuco = [
@@ -75,7 +55,7 @@ const splitter = new RecursiveCharacterTextSplitter({
 
 // create collection on datastrax from datastax API
 const createCollection = async (
-  similarityMetric: SimilarityMetric = "dot_product"
+  similarityMetric: SimilarityMetric = "cosine"
 ) => {
   const res = await db.createCollection(ASTRA_DB_COLLECTION, {
     vector: {
