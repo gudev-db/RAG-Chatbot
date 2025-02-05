@@ -49,8 +49,8 @@ const db = client.db(ASTRA_DB_API_ENDPOINT, { namespace: ASTRA_DB_NAMESPACE });
 
 // set splitter + options
 const splitter = new RecursiveCharacterTextSplitter({
-  chunkSize: 512,
-  chunkOverlap: 100,
+  chunkSize: 256,
+  chunkOverlap: 80,
 });
 
 // create collection on datastrax from datastax API
