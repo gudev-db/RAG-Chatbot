@@ -17,7 +17,7 @@ const UserInput = ({ input, handleInputChange, handleSubmit }) => {
           className="question-box"
           onChange={handleInputChange}
           value={input}
-          placeholder="Ask me ..."
+          placeholder="Vamos conversar..."
         />
         <input type="submit" className="submit-button" />
       </form>

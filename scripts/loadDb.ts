@@ -43,19 +43,62 @@ const citrosuco = [
   
 ];
 
+// define which website to scrape
+const citrosuco2 = [
+
+  "https://docs.google.com/document/d/1tskVRU6wHZT9MrgwGQYxvOTavE-Bc6kvScsBtkbnAH4/edit?usp=sharing",
+  "https://www.holambra.com.br/",
+  "https://www.holambra.com.br/servicos/beneficiamento-armazenamento-e-transporte",
+  "https://www.holambra.com.br/servicos/creditos-e-investimento",
+  "https://www.holambra.com.br/carreiras",
+  "https://www.holambra.com.br/governanca/portal-de-privacidade",
+  "https://www.holambra.com.br/governanca/organograma-geral",
+  "https://www.holambra.com.br/governanca/conselho",
+  "https://www.holambra.com.br/produtos/culturas",
+  "https://www.holambra.com.br/produtos/racao",
+  "https://www.holambra.com.br/produtos/insumos-agricolas",
+  "https://www.holambra.com.br/unidades/matriz",
+  "https://www.holambra.com.br/unidades/avare",
+  "https://www.holambra.com.br/unidades/itabera",
+  "https://www.holambra.com.br/unidades/loja-itabera",
+  "https://www.holambra.com.br/unidades/loja-itapetininga",
+  "https://www.holambra.com.br/unidades/loja-santa-cruz-do-rio-pardo",
+  "https://www.holambra.com.br/unidades/sao-manuel",
+  "https://www.holambra.com.br/unidades/takaoka",
+  "https://www.holambra.com.br/unidades/taquari",
+  "https://www.holambra.com.br/unidades/taquarituba",
+  "https://www.holambra.com.br/unidades/taquarivai",
+  "https://www.holambra.com.br/institucional/quem-somos",
+  "https://www.holambra.com.br/institucional/linha-do-tempo",
+  "https://www.holambra.com.br/institucional/certificacoes-e-premiacoes",
+  "https://www.holambra.com.br/institucional/sustentabilidade-e-responsabilidade-social",
+  "https://www.holambra.com.br/institucional/inovacao",
+  "https://www.linkedin.com/company/cooperativa-agro-industrial-holambra/",
+  "https://www.instagram.com/oficialholambra/",
+  "https://agfeed.com.br/negocios/com-diversificacao-e-investimento-de-r-200-mi-holambra-canta-vitoria-em-ano-dificil/",
+  "https://revistacultivar.com/noticias/holambra-cooperativa-agroindustrial-apresenta-seu-novo-posicionamento-institucional",
+  "https://theorg.com/org/holambra-cooperativa-agroindustrial",
+  "https://globorural.globo.com/Noticias/Empresas-e-Negocios/noticia/2021/05/aos-60-anos-cooperativa-holambra-bate-recorde-de-beneficiamento-de-soja.html",
+  "https://www.paginarural.com.br/noticia/301070/holambra-cooperativa-agroindustrial-registra-faturamento-recorde-de-r-17-bi-no-primeiro-semestre-de-2022",
+  "https://cnpj.biz/60906724000120",
+  "https://www.situacaocadastral.info/cnpj/cooperativa-agro-industrial-holambra-60906724000120",
+  "https://www.linkedin.com/posts/cooperativa-agro-industrial-holambra_holambra-cooperativa-culturadequalidade-activity-7089178662381510657-Xhaf/",
+  
+];
+
 // Comment: Not conforming to TS strictness
 const client = new DataAPIClient(ASTRA_DB_APPLICATION_TOKEN);
 const db = client.db(ASTRA_DB_API_ENDPOINT, { namespace: ASTRA_DB_NAMESPACE });
 
 // set splitter + options
 const splitter = new RecursiveCharacterTextSplitter({
-  chunkSize: 256,
-  chunkOverlap: 80,
+  chunkSize: 1024,
+  chunkOverlap: 180,
 });
 
 // create collection on datastrax from datastax API
 const createCollection = async (
-  similarityMetric: SimilarityMetric = "cosine"
+  similarityMetric: SimilarityMetric = "dot_product"
 ) => {
   const res = await db.createCollection(ASTRA_DB_COLLECTION, {
     vector: {
@@ -70,7 +113,7 @@ const createCollection = async (
 // load sample data into collection
 const loadSampleData = async () => {
   const collection = await db.collection(ASTRA_DB_COLLECTION);
-  for await (const url of citrosuco) {
+  for await (const url of citrosuco2) {
     const content = await scrapePage(url);
     const chunks = await splitter.splitText(content);
     for await (const chunk of chunks) {

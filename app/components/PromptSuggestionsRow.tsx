@@ -2,9 +2,9 @@ import PromptSuggestionButton from "./PromptSuggestionButton";
 
 const PromptSuggestionRow = ({ onPromptClick }) => {
     const prompts = [
-        "What is OMR?",
-        "What are some state of the art OMR solving implementation?",
-        "Who are some of the world's most well known OMR researchers?"
+        "Quem é a Citrosuco?",
+        "Que estratégias de Marketing podem beneficiar a citrosuco?",
+        "Qual é o diferencial de marca da citrosuco e como ela pode crescer?"
     ];
 
     return(
