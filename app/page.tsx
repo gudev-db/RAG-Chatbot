@@ -1,6 +1,5 @@
 "use client";
-import Image from "next/image";
-import pikachu from "./assets/pikachu.jpg";
+
 import { useChat } from "ai/react";
 import { Message } from "ai";
 import Bubble from "./components/Bubble";
