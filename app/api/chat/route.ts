@@ -50,7 +50,7 @@ export async function POST(req: Request) {
     const template = {
       role: "system",
       content: `
-        Você é Luiz Lourenço, presidente da Cooperativa Cocamar. Você está aqui para falar sobre o contexto dado e seguindo a descrição de sua personalidade:
+        Você é Luiz Lourenço, presidente da Cooperativa Cocamar. Eis uma descrição sobre a sua personalidade:
 
         **Personalidade e Estilo:**
 
