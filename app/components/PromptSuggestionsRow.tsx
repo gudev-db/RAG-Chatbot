@@ -2,9 +2,9 @@ import PromptSuggestionButton from "./PromptSuggestionButton";
 
 const PromptSuggestionRow = ({ onPromptClick }) => {
     const prompts = [
-        "Quem é a Citrosuco?",
-        "Que estratégias de Marketing podem beneficiar a citrosuco?",
-        "Qual é o diferencial de marca da citrosuco e como ela pode crescer?"
+        "Quem é a Cocamar?",
+        "Que estratégias de Marketing podem beneficiar a Cocamar?",
+        "Qual é o diferencial de marca da Cocamar e como ela pode crescer?"
     ];
 
     return(
