@@ -1,6 +1,6 @@
 /* Reset default margin and padding */
 * {
-    font-family: 'Verdana', Geneva, Tahoma, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -8,14 +8,14 @@
 
 /* Body styling */
 body {
-    background-color: #f8f8f8;
+    background-color: #f4f7f6;
     color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     font-size: 16px;
-    overflow: auto; /* Allow page scroll */
+    overflow: auto;
     text-align: center;
 }
 
@@ -27,14 +27,14 @@ main {
     align-items: center;
     width: 100%;
     min-height: 100%;
-    max-width: 900px; /* Maximum width for larger screens */
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.8));
-    border-radius: 20px;
+    max-width: 900px;
+    background: #ffffff;
+    border-radius: 15px;
     padding: 30px;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     position: relative;
-    backdrop-filter: blur(5px);
-    overflow: auto; /* Allow scrolling */
+    backdrop-filter: blur(10px);
+    overflow: auto;
 }
 
 /* Image container */
@@ -55,9 +55,9 @@ section {
     width: 100%;
     padding: 10px;
     overflow-y: auto;
-    max-height: calc(100vh - 150px); /* Allow room for the input box */
-    margin-bottom: 10px; /* Space between messages and input box */
-    padding-bottom: 20px; /* Prevent the last message from being hidden */
+    max-height: calc(100vh - 150px);
+    margin-bottom: 10px;
+    padding-bottom: 20px;
 }
 
 /* Starter text style */
@@ -65,28 +65,28 @@ section {
     padding: 0 40px;
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #333;
+    color: #555;
 }
 
 /* Form container (for input) */
 .form-container {
     display: flex;
-    justify-content: flex-start; /* Position the input box to the left */
+    justify-content: flex-start;
     width: 100%;
     padding: 10px;
     margin-top: 20px;
-    background-color: white;
-    border-top: 2px solid #ccc;
+    background-color: #fff;
+    border-top: 2px solid #ddd;
 }
 
 /* Input box styling */
 input.question-box {
-    width: 600px; /* Set a fixed width for the input box */
+    width: 600px;
     padding: 14px 20px;
     font-size: 16px;
     color: #333;
-    background-color: transparent; /* Remove background */
-    border: 2px solid #ccc; /* Keep border visible */
+    background-color: #f7f7f7;
+    border: 2px solid #ddd;
     border-radius: 12px;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     outline: none;
@@ -95,10 +95,10 @@ input.question-box {
 
 /* Input focus effect */
 input.question-box:focus {
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    border-color: #ff5733;
-    transform: scale(1.03);
+    background-color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    border-color: #007bff;
+    transform: scale(1.02);
 }
 
 /* Placeholder styling */
@@ -109,8 +109,8 @@ input.question-box::placeholder {
 
 /* Input hover effect */
 input.question-box:hover {
-    background-color: #f3f3f3;
-    border-color: #ff5733;
+    background-color: #f1f1f1;
+    border-color: #007bff;
 }
 
 /* Submit button styling */
@@ -119,18 +119,18 @@ input[type="submit"] {
     padding: 14px;
     font-size: 16px;
     color: white;
-    background: linear-gradient(135deg, #ff5733, #ff9d2f);
+    background: linear-gradient(135deg, #007bff, #0056b3);
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Submit button hover effect */
 input[type="submit"]:hover {
-    background: linear-gradient(135deg, #ff2a00, #cc472a);
-    transform: scale(1.1);
+    background: linear-gradient(135deg, #0056b3, #003f87);
+    transform: scale(1.05);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
@@ -142,18 +142,18 @@ input[type="submit"]:focus {
 
 /* Submit button active effect */
 input[type="submit"]:active {
-    transform: scale(1.05);
+    transform: scale(1.03);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
 /* Bubble styling */
 .bubble {
-    margin: 10px 0;
-    padding: 12px 20px;
+    margin: 12px 0;
+    padding: 14px 22px;
     font-size: 16px;
-    border-radius: 20px;
+    border-radius: 18px;
     color: #333;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     max-width: 80%;
     text-align: left;
     word-wrap: break-word;
@@ -164,17 +164,15 @@ input[type="submit"]:active {
 .bubble.user {
     background-color: #f0f0f0;
     margin-left: auto;
-    border-radius: 20px 20px 0 20px;
+    border-radius: 18px 18px 0 18px;
     color: #333;
-    transform: scale(1.02);
 }
 
 /* Assistant bubble */
 .bubble.assistant {
-    background-color: #ffffff;
-    border-radius: 20px 20px 20px 0;
-    color: #333;
-    transform: scale(1.02);
+    background-color: #007bff;
+    color: white;
+    border-radius: 18px 18px 18px 0;
 }
 
 /* Prompt suggestion row */
@@ -182,18 +180,18 @@ input[type="submit"]:active {
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 18px;
     margin-top: 30px;
 }
 
 /* Prompt suggestion button */
 .prompt-suggestion-button {
-    padding: 12px 18px;
+    padding: 14px 22px;
     font-size: 16px;
     color: #333;
     background-color: #f0f0f0;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -210,9 +208,9 @@ input[type="submit"]:active {
     margin: 20px auto;
     width: 60px;
     aspect-ratio: 4;
-    background: no-repeat radial-gradient(circle closest-side, #ff5733 90%, #0000) 0% 50%,
-                no-repeat radial-gradient(circle closest-side, #ff5733 90%, #0000) 50% 50%,
-                no-repeat radial-gradient(circle closest-side, #ff5733 90%, #0000) 100% 50%;
+    background: no-repeat radial-gradient(circle closest-side, #007bff 90%, #0000) 0% 50%,
+                no-repeat radial-gradient(circle closest-side, #007bff 90%, #0000) 50% 50%,
+                no-repeat radial-gradient(circle closest-side, #007bff 90%, #0000) 100% 50%;
     background-size: calc(100% / 3) 100%;
     animation: loading 1s infinite linear;
 }
@@ -223,25 +221,24 @@ input[type="submit"]:active {
     66% {background-size: calc(100% / 3) 100%, calc(100% / 3) 100%, calc(100% / 3) 0%;}
 }
 
-/* Estilo para a bolha do usuário */
+/* User bubble */
 .user-bubble {
-    background-color: #f0f0f0;
+    background-color: #f5f5f5;
     color: #333;
-    align-self: flex-end; /* Bolha do usuário à direita */
+    align-self: flex-end;
     margin: 10px;
-    padding: 10px;
-    border-radius: 15px;
+    padding: 14px;
+    border-radius: 18px;
     max-width: 70%;
-  }
-  
-  /* Estilo para a bolha da IA */
-  .ai-bubble {
+}
+
+/* AI bubble */
+.ai-bubble {
     background-color: #007bff;
     color: white;
-    align-self: flex-start; /* Bolha da IA à esquerda */
+    align-self: flex-start;
     margin: 10px;
-    padding: 10px;
-    border-radius: 15px;
+    padding: 14px;
+    border-radius: 18px;
     max-width: 70%;
-  }
-  
+}
