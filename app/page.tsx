@@ -1,75 +1,25 @@
+// Page.tsx
 "use client";
 
-import { useChat } from "ai/react";
-import { Message } from "ai";
-import Bubble from "./components/Bubble";
-import LoadingBubble from "./components/LoadingBubble";
-import PromptSuggestionRow from "./components/PromptSuggestionsRow";
+import React from "react";
+import { useRouter } from "next/navigation"; // Para navegação no cliente
 
+const Page = () => {
+  const router = useRouter();
 
+  const handleClick = () => {
+    router.push("/home"); // Navega para a página de chat
+  };
 
-const UserInput = ({ input, handleInputChange, handleSubmit }) => {
   return (
-    <div className="input-area">
-      <form onSubmit={handleSubmit}>
-        <input
-          className="question-box"
-          onChange={handleInputChange}
-          value={input}
-          placeholder="Vamos conversar..."
-        />
-        <input type="submit" className="submit-button" />
-      </form>
+    <div className="page-container">
+      <h1>Bem-vindo ao RAGSearch</h1>
+      <p>Escolha um ícone abaixo para começar a conversar.</p>
+      <div className="icon-container" onClick={handleClick}>
+        <img src="/workspaces/RAG-Chatbot/app/assets/f1GPTLogo.jpg" alt="Ícone" className="icon" />
+      </div>
     </div>
   );
 };
 
-const Home = () => {
-  const {
-    append,
-    isLoading,
-    messages,
-    input,
-    handleInputChange,
-    handleSubmit,
-  } = useChat();
-
-  const noMessages = !messages || messages.length === 0;
-  const handlePrompt = (promptText) => {
-    const msg: Message = {
-      id: crypto.randomUUID(),
-      content: promptText,
-      role: "user",
-    };
-    append(msg);
-  };
-
-  return (
-    <main>
-      <div className="chat-container">
-        <section className={noMessages ? "" : "populated"}>
-          {noMessages ? (
-            <>
-              <p className="starter-text">Welcome to RAGSearch!</p>
-              <PromptSuggestionRow onPromptClick={handlePrompt} />
-            </>
-          ) : (
-            <>
-              {messages.map((message, index) => (
-                <Bubble key={`message-${index}`} message={message} />
-              ))}
-              {isLoading && <LoadingBubble />}
-            </>
-          )}
-        </section>
-        <UserInput
-          input={input}
-          handleInputChange={handleInputChange}
-          handleSubmit={handleSubmit}
-        />
-      </div>
-    </main>
-  );
-};
-
-export default Home;
+export default Page;
