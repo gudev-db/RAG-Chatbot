@@ -74,15 +74,8 @@ const citrosuco2 = [
   "https://www.holambra.com.br/institucional/sustentabilidade-e-responsabilidade-social",
   "https://www.holambra.com.br/institucional/inovacao",
   "https://www.linkedin.com/company/cooperativa-agro-industrial-holambra/",
-  "https://www.instagram.com/oficialholambra/",
-  "https://agfeed.com.br/negocios/com-diversificacao-e-investimento-de-r-200-mi-holambra-canta-vitoria-em-ano-dificil/",
-  "https://revistacultivar.com/noticias/holambra-cooperativa-agroindustrial-apresenta-seu-novo-posicionamento-institucional",
-  "https://theorg.com/org/holambra-cooperativa-agroindustrial",
-  "https://globorural.globo.com/Noticias/Empresas-e-Negocios/noticia/2021/05/aos-60-anos-cooperativa-holambra-bate-recorde-de-beneficiamento-de-soja.html",
-  "https://www.paginarural.com.br/noticia/301070/holambra-cooperativa-agroindustrial-registra-faturamento-recorde-de-r-17-bi-no-primeiro-semestre-de-2022",
   "https://cnpj.biz/60906724000120",
-  "https://www.situacaocadastral.info/cnpj/cooperativa-agro-industrial-holambra-60906724000120",
-  "https://www.linkedin.com/posts/cooperativa-agro-industrial-holambra_holambra-cooperativa-culturadequalidade-activity-7089178662381510657-Xhaf/",
+
   
 ];
 
