@@ -77,6 +77,11 @@ const citrosuco2 = [
   "https://cnpj.biz/60906724000120",
 
   
+  "https://docs.google.com/document/d/1LhENR1ISC6lmXsERcVva9S6LUovJuIMBFtCsk8OSe-Y/edit?tab=t.0",
+  "https://www.cocamar.com.br/sobre/estrutura-organizacional",
+  "https://noticias.uol.com.br/ultimas-noticias/agencia-estado/2025/02/07/cocamar-vai-investir-r-750-milhoes-em-nova-esmagadora-em-maringa.htm",
+  "https://www.paranacooperativo.coop.br/noticias-ambiental/presidente-do-conselho-de-administracao-da-cocamar-falou-na-rio-agro-2024",
+
 ];
 
 // Comment: Not conforming to TS strictness
