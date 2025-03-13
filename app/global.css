@@ -50,12 +50,12 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start; /* Align messages to the left */
     flex-grow: 1;
     width: 100%;
     padding: 10px;
     overflow-y: auto;
-    max-height: calc(100vh - 150px);
+    max-height: calc(100vh - 150px); /* Adjust height */
     margin-bottom: 10px;
     padding-bottom: 20px;
 }
@@ -160,20 +160,20 @@ input[type="submit"]:active {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* User bubble */
+/* User bubble (right-aligned, light background) */
 .bubble.user {
-    background-color: #e0f7fa; /* Light cyan for the user */
-    margin-left: auto;
-    border-radius: 18px 18px 0 18px;
+    background-color: #e0f7fa; /* Light cyan */
+    margin-left: auto; /* Align user messages to the right */
+    border-radius: 18px 18px 0 18px; /* Rounded corners */
     color: #333;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-/* Assistant bubble */
+/* Assistant bubble (left-aligned, blue background) */
 .bubble.assistant {
     background-color: #007bff; /* Blue for the assistant */
     color: white;
-    border-radius: 18px 18px 18px 0;
+    border-radius: 18px 18px 18px 0; /* Rounded corners */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
@@ -221,26 +221,4 @@ input[type="submit"]:active {
     33% {background-size: calc(100% / 3) 0%, calc(100% / 3) 100%, calc(100% / 3) 100%;}
     50% {background-size: calc(100% / 3) 100%, calc(100% / 3) 0%, calc(100% / 3) 100%;}
     66% {background-size: calc(100% / 3) 100%, calc(100% / 3) 100%, calc(100% / 3) 0%;}
-}
-
-/* User bubble */
-.user-bubble {
-    background-color: #e0f7fa;
-    color: #333;
-    align-self: flex-end; /* Bolha do usuário à direita */
-    margin: 10px;
-    padding: 14px;
-    border-radius: 18px;
-    max-width: 70%;
-}
-
-/* AI bubble */
-.ai-bubble {
-    background-color: #007bff;
-    color: white;
-    align-self: flex-start; /* Bolha da IA à esquerda */
-    margin: 10px;
-    padding: 14px;
-    border-radius: 18px;
-    max-width: 70%;
 }
