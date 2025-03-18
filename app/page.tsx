@@ -50,7 +50,7 @@ const Home = () => {
         <section className={noMessages ? "" : "populated"}>
           {noMessages ? (
             <>
-              <p className="starter-text">Welcome to RAGSearch!</p>
+              <p className="starter-text">Olá! Sou Luiz Lourenço!</p>
               <PromptSuggestionRow onPromptClick={handlePrompt} />
             </>
           ) : (
