@@ -19,10 +19,9 @@ const {
 
 const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
 
-//websites do scrape
 
 // define which website to scrape
-const citrosuco = [
+const holambra = [
   "https://docs.google.com/document/d/1jhfLliZ3xFPPRVujycHk7mZuGG8ZX_-I97GVEFFviaA/edit?tab=t.0",
   "https://docs.google.com/document/d/1zGu1fNopzGBzf2OU7KFvAvsThtrFNnsWMlRMXkcQx0M/edit?tab=t.0",
   "https://docs.google.com/document/d/1W823sGLeNPAlw44QtmsTej9BYgbCmepQrL83xFokcos/edit?tab=t.0",
@@ -30,17 +29,32 @@ const citrosuco = [
   "https://docs.google.com/document/d/19sVar6ENkkXQ1mI94aUC905gOOcc9PRoos6eq-3L1Mk/edit?tab=t.0",
   "https://docs.google.com/document/d/1o37Nt0DACvqGjflFdz2jy4eVIk6vK02g59xFM822_k0/edit?tab=t.0",
   "https://docs.google.com/document/d/1-sKhHdqsSS53UPI2fNqFQmW85zEltf0V41bZ4VlCBPM/edit?tab=t.0",
-  "https://www.citrosuco.com/",
-  "https://www.citrosuco.com/products/",
-  "https://www.citrosuco.com/a-citrosuco/",
-  "https://www.linkedin.com/company/citrosuco/posts/?feedView=all",
-  "https://finance.yahoo.com/news/brazil-orange-juice-heavyweight-citrosuco-143515156.html",
-  "https://www.citrosuco.com/linha-do-tempo/",
-  "https://www.citrosuco.com/commitments/indicators/",
-  "https://www.citrosuco.com/sustentabilidade/",
-  "https://www.citrosuco.com/cadeia-de-valor/",
-  "https://www.citrosuco.com/wp-content/uploads/2024/01/Citrosuco_ra_2021_2022_eng_final.pdf",
-  
+  "https://holambra.s3.sa-east-1.amazonaws.com/download/jornada-esg.pdf",
+  "https://holambra.s3.sa-east-1.amazonaws.com/download/relatorio-de-gestao-2024.pdf",
+  "https://drive.google.com/file/d/1DG7qnDcnV6fsoyFu6jWjig5R9oq2HJpB/view?usp=sharing",
+  "https://docs.google.com/presentation/d/1B1orXFoZv88Or6BywgoijQNd9BpiXhmt/edit?usp=sharing&ouid=111589519243482759530&rtpof=true&sd=true",
+  "https://drive.google.com/file/d/1ysanPziMVdiKMmluVXidy5c46pcaRByc/view?usp=sharing",
+  "https://drive.google.com/file/d/1HTV4e2T4NvHgj852KSu9LfKaj1-InK2B/view?usp=sharing",
+  "https://docs.google.com/presentation/d/196y_sJk9JBHW91rUPG4cCO9t19QnCDdi/edit?usp=sharing&ouid=111589519243482759530&rtpof=true&sd=true",
+  "https://docs.google.com/presentation/d/1b8oionDaAufRrv79fayXPPROF34djORO/edit?usp=sharing&ouid=111589519243482759530&rtpof=true&sd=true",
+  "https://docs.google.com/presentation/d/19gvsyVy4O9KlUoa5eWbJ4dDoSgw9Jf0i/edit?usp=sharing&ouid=111589519243482759530&rtpof=true&sd=true",
+  "https://docs.google.com/presentation/d/10HmJffbBer_QvYqFSi8rnpqkLxHFd-oU/edit?usp=sharing&ouid=111589519243482759530&rtpof=true&sd=true",
+  "https://docs.google.com/presentation/d/1c9zaTbVcAV8RxfHuB9MrRPHI1r-j3q6n/edit?usp=sharing&ouid=111589519243482759530&rtpof=true&sd=true",
+  "https://www.holambra.com.br/",
+  "https://www.holambra.com.br/institucional/quem-somos",
+  "https://www.holambra.com.br/institucional/linha-do-tempo",
+  "https://www.holambra.com.br/institucional/certificacoes-e-premiacoes",
+  "https://www.holambra.com.br/institucional/sustentabilidade-e-responsabilidade-social",
+  "https://www.holambra.com.br/institucional/inovacao",
+  "https://www.holambra.com.br/unidades/matriz",
+  "https://www.holambra.com.br/produtos/culturas",
+  "https://www.holambra.com.br/produtos/racao",
+  "https://www.holambra.com.br/produtos/insumos-agricolas",
+  "https://www.holambra.com.br/servicos/beneficiamento-armazenamento-e-transporte",
+  "https://www.holambra.com.br/servicos/creditos-e-investimento",
+  "https://app.linhaetica.com.br/etica/holambra",
+  "https://holambra.s3.sa-east-1.amazonaws.com/files/codigo-de-etica.pdf",
+  "https://www.situacaocadastral.info/cnpj/cooperativa-agro-industrial-holambra-60906724000120",
 ];
 
 // define which website to scrape
@@ -103,13 +117,13 @@ const db = client.db(ASTRA_DB_API_ENDPOINT, { namespace: ASTRA_DB_NAMESPACE });
 
 // set splitter + options
 const splitter = new RecursiveCharacterTextSplitter({
-  chunkSize: 1024,
-  chunkOverlap: 360,
+  chunkSize: 512,
+  chunkOverlap: 64,
 });
 
 // create collection on datastrax from datastax API
 const createCollection = async (
-  similarityMetric: SimilarityMetric = "dot_product"
+  similarityMetric: SimilarityMetric = "cosine"
 ) => {
   const res = await db.createCollection(ASTRA_DB_COLLECTION, {
     vector: {
@@ -124,7 +138,7 @@ const createCollection = async (
 // load sample data into collection
 const loadSampleData = async () => {
   const collection = await db.collection(ASTRA_DB_COLLECTION);
-  for await (const url of cocamar) {
+  for await (const url of holambra) {
     const content = await scrapePage(url);
     const chunks = await splitter.splitText(content);
     for await (const chunk of chunks) {
