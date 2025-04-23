@@ -25,10 +25,6 @@ const holambra = [
   "https://docs.google.com/document/d/1jhfLliZ3xFPPRVujycHk7mZuGG8ZX_-I97GVEFFviaA/edit?tab=t.0",
   "https://docs.google.com/document/d/1zGu1fNopzGBzf2OU7KFvAvsThtrFNnsWMlRMXkcQx0M/edit?tab=t.0",
   "https://docs.google.com/document/d/1W823sGLeNPAlw44QtmsTej9BYgbCmepQrL83xFokcos/edit?tab=t.0",
-  "https://docs.google.com/document/d/19dpqC75jSDmkF6R5NbwecM3Yoj4ebOSiNbJ2zwL9cGE/edit?tab=t.0",
-  "https://docs.google.com/document/d/19sVar6ENkkXQ1mI94aUC905gOOcc9PRoos6eq-3L1Mk/edit?tab=t.0",
-  "https://docs.google.com/document/d/1o37Nt0DACvqGjflFdz2jy4eVIk6vK02g59xFM822_k0/edit?tab=t.0",
-  "https://docs.google.com/document/d/1-sKhHdqsSS53UPI2fNqFQmW85zEltf0V41bZ4VlCBPM/edit?tab=t.0",
   "https://holambra.s3.sa-east-1.amazonaws.com/download/jornada-esg.pdf",
   "https://holambra.s3.sa-east-1.amazonaws.com/download/relatorio-de-gestao-2024.pdf",
   "https://drive.google.com/file/d/1DG7qnDcnV6fsoyFu6jWjig5R9oq2HJpB/view?usp=sharing",
@@ -109,6 +105,19 @@ const cocamar = [
 
 ];
 
+const felina = [
+
+  "https://docs.google.com/document/d/1mIPDr9ofqauayRLLDWxNPPFo3qfO2eGlB3qpSlh8f7g/edit?usp=sharing",
+  "https://docs.google.com/document/d/1DYC9AmrcMcoELkxRer_uv6luehBNasGMudEyMNrotaE/edit?usp=sharing",
+  "https://docs.google.com/document/d/1_THcjghTOW0JJfMYiDRctj6TtBEU4X9FzoPLKI6lCHk/edit?usp=sharing",
+  "https://docs.google.com/document/d/1d1yvSDOjgLggpQU3Snfnt0qMH0g_AIp1DF3gfTnAZ2o/edit?usp=sharing",
+  "https://docs.google.com/document/d/1SVgvUMsuHGzZJ_CILGQaOOxZKTvnUy-kXBaXLcfYwDw/edit?usp=sharing",
+  "https://docs.google.com/document/d/1Qsvi_I4j3q-whQxdygQvtsSxO3Bg73Hm47r4dNF4zcA/edit?usp=sharing",
+
+
+
+]
+
 const transcript =["https://docs.google.com/document/d/1LhENR1ISC6lmXsERcVva9S6LUovJuIMBFtCsk8OSe-Y/edit?tab=t.0",]
 
 // Comment: Not conforming to TS strictness
@@ -117,8 +126,8 @@ const db = client.db(ASTRA_DB_API_ENDPOINT, { namespace: ASTRA_DB_NAMESPACE });
 
 // set splitter + options
 const splitter = new RecursiveCharacterTextSplitter({
-  chunkSize: 512,
-  chunkOverlap: 64,
+  chunkSize: 1024,
+  chunkOverlap: 128,
 });
 
 // create collection on datastrax from datastax API
@@ -138,7 +147,7 @@ const createCollection = async (
 // load sample data into collection
 const loadSampleData = async () => {
   const collection = await db.collection(ASTRA_DB_COLLECTION);
-  for await (const url of holambra) {
+  for await (const url of felina) {
     const content = await scrapePage(url);
     const chunks = await splitter.splitText(content);
     for await (const chunk of chunks) {
